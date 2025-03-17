@@ -13,8 +13,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-lang: ja-JP
 title: "tamo's blog"
+title_separator: "|"
 email: 
 description: "For all developers who love programming."
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -25,7 +25,16 @@ github_username:  tamochia
 # Build settings
 markdown: kramdown
 theme: minima
+#theme: jekyll-theme-minimal
+
+paginate: 3
+paginate_path: page:num
+
+sass:
+  style: expanded
+
 plugins:
+  - jekyll-paginate
   - jekyll-feed
 
 # Exclude from processing.
