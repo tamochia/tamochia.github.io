@@ -11,3 +11,6 @@ categories: Uncategorized
 
 やっぱりJekyllを使用します。
 
+画像は表示できるかしら。。。
+
+![](/assets/images/cat_m.jpg)
