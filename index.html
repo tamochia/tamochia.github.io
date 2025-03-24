@@ -1,7 +1,18 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: home
+layout: default
 ---
+
+<div class="contents front-page">
+<div class="container">
+
+{% for post in site.posts limit:5 %}
+  <article class="archive">
+  <h2 class="archive__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <p class="archive__data"><time>{{ post.date | date: '%B %d, %Y' }}</time><p>
+  <!-- <div class="archive__excerpt">{{ post.excerpt }}</div> -->
+  <article>
+{% endfor %}
+
+</div><!--container-->
+</div><!--contents-->
 

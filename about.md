@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+description: 当Webサイトについて
 permalink: /about/
 ---
 
