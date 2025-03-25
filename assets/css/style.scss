@@ -4,6 +4,7 @@
 @import 'config';
 @import 'mixins';
 @import 'extends';
+@import '_global';
 
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
@@ -30,19 +31,19 @@ body {
 
 h1 {
   margin: 2em 0 1.5em 0;
-  font-size: 22px;
+  font-size: 30px;
 
-  @include breakpoint(){
-    font-size: 26px;
+  @include responsive(sp){
+    font-size: 10px;
   }
 }
 
 h2 {
   margin: 2em 0 1.5em 0;
-  font-size: 20px;
+  font-size: 24px;
 
-  @include breakpoint(){
-    font-size: 24px;
+  @include responsive(sp){
+    font-size: 20px;
   }
 }
 

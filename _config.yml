@@ -33,7 +33,7 @@ paginate: 3
 paginate_path: page:num
 
 sass:
-  style: compressed
+  style: expanded
 
 plugins:
   - jekyll-paginate

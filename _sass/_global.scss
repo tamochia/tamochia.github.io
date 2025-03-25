@@ -1,0 +1,18 @@
+// _global.scss
+
+$breakpoints: (
+    'pc': (min-width: 1080px),
+    'tb': (min-width: 768px),
+    'sp': (min-width: 480px)
+) !default;
+
+@mixin responsive($breakpoint) {
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    @else {
+        @error "This breakpoint is not defined. Valid breakpoints are -> #{map-keys($breakpoints)}";
+    }
+}
