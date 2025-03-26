@@ -31,19 +31,19 @@ body {
 
 h1 {
   margin: 2em 0 1.5em 0;
-  font-size: 30px;
+  font-size: 24px;
 
-  @include responsive(sp){
-    font-size: 10px;
+  @include responsive(pc){
+    font-size: 26px;
   }
 }
 
 h2 {
   margin: 2em 0 1.5em 0;
-  font-size: 24px;
+  font-size: 20px;
 
-  @include responsive(sp){
-    font-size: 20px;
+  @include responsive(pc){
+    font-size: 24px;
   }
 }
 
@@ -103,25 +103,25 @@ pre > code {
   @include pad();
 }
 
-.nav{
+.nav {
 
   border-top: $border;
   border-bottom: $border;
 
-  &__list{
+  &__list {
     @include resetlist();
     display: flex;
     flex-wrap: wrap;
   }
 
-  &__item{
+  &__item {
     margin-right: 1em;
-
-    a{
+  
+    a {
       display: block;
       text-decoration: none;
       color: $font-color;
-      padding: 15px 10px;
+      padding: 12px 10px;
       font-size: 0.9em;
     }
   }
@@ -156,15 +156,15 @@ pre > code {
   }
 }
 
-.site-title{
+.site-title {
   font-weight: bold;
   padding: 4% 0;
 
-  @include breakpoint(){
-    font-size: 20px;
+  @include breakpoint() {
+    font-size: 24px;
   }
 
-  a{
+  a {
     color: $font-color;
     text-decoration: none;
   }
