@@ -5,4 +5,15 @@ $font-color: #333;
 $font-color-a: #2a7ae2;
 $font-color-a-visited: #1756a9;
 $font-color-a-hover: lighten($font-color-a, 15%);
-$font-list: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3, Meiryo', メイリオ, Arial, sans-serif;
+$font-list: 'Segoe UI', Tahoma, Geneva, Verdana, Meiryo, 'Meiryo UI', メイリオ, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3, Meiryo', sans-serif;
+$font-list-con: monospace, serif;
+
+$color-fg-default: #1F2328;
+$color-fg-muted: #656d76;
+$color-fg-subtle: #6e7781;
+$color-canvas-default: #ffffff;
+$color-canvas-subtle: #f6f8fa;
+$color-border-default: #d0d7de;
+$color-border-muted: hsla(210,18%,87%,1);
+$color-neutral-muted: rgba(175,184,193,0.2);
+$color-accent-fg: #0969da;

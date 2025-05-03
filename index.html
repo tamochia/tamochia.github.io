@@ -5,12 +5,15 @@ layout: default
 <div class="contents front-page">
 <div class="container">
 
+<p style="color:brown"><b>Currently under construction...
+<br>現在工事中...</b></p>
+
 {% for post in site.posts limit:5 %}
   <article class="archive">
-  <h2 class="archive__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-  <p class="archive__data"><time>{{ post.date | date: '%B %d, %Y' }}</time><p>
+  <h3 class="archive__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+  <p class="archive__data"><time>{{ post.date | date: '%B %d, %Y' }}</time></p>
   <!-- <div class="archive__excerpt">{{ post.excerpt }}</div> -->
-  <article>
+  </article>
 {% endfor %}
 
 </div><!--container-->
