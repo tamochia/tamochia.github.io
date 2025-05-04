@@ -11,7 +11,7 @@ layout: default
 {% for post in site.posts limit:5 %}
   <article class="archive">
   <h3 class="archive__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-  <p class="archive__data"><time>{{ post.date | date: '%B %d, %Y' }}</time></p>
+  <p class="archive__date"><time>{{ post.date | date: '%B %d, %Y' }}</time></p>
   <!-- <div class="archive__excerpt">{{ post.excerpt }}</div> -->
   </article>
 {% endfor %}
