@@ -350,8 +350,9 @@ table.rouge-table {
 		margin-left: auto;
 	}
 
-	&__tag {
+	&__tag a { 
 		text-decoration: none;
+		color: $color-fg-muted;;
 	}
 
 	&__excerpt {
