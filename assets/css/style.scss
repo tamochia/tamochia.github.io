@@ -100,6 +100,7 @@ p {
 
 code {
 	background-color: $color-neutral-muted;
+	border-radius: 5px;
 }
 
 pre {
@@ -110,8 +111,8 @@ pre {
 	line-height: 1.3;
 	color: $color-fg-default;
 	background-color: $color-canvas-subtle;
-	border: 1px solid $color-border-default;
-	border-radius: 6px;
+	border: 1px solid $color-border-muted;
+	border-radius: 3px;
 
 	code {
 		background: none;
@@ -121,15 +122,18 @@ pre {
 }
 
 li {
-	margin-top: 0.1em;
-	margin-bottom: 0.1em;
-	line-height: 140%;
+	margin: 0;
+
+	p {
+		@include resetlist();
+		padding-bottom: .5em;
+		line-height: 1.2;
+	}
 }
 
 
 ul, ol {
-	margin-top: 0;
-	margin-bottom: 0;
+	margin: 0;
 }
 
 
