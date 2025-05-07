@@ -275,9 +275,14 @@ table.rouge-table {
 	}
 }
 
+.site-info {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em 0;
+}
+
 .site-title {
 	font-weight: bold;
-	padding: 1em 0;
 
 	@include responsive(pc) {
 		font-size: 24px;
@@ -286,6 +291,16 @@ table.rouge-table {
 	a {
 		color: $color-fg-default;
 		text-decoration: none;
+	}
+}
+
+.site-description {
+	margin-left: auto;
+	font-size: 10px;
+	color: $color-fg-muted;
+	
+	@include responsive(pc) {
+		font-size: 12pt;
 	}
 }
 

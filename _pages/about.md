@@ -4,16 +4,14 @@ title: About
 description: 当Webサイトについて
 permalink: /about/
 ---
+大学の中の情報システム屋さんみたいなことしてます。
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+講義やセミナーで資料を提示したり、提供したりするために、このarchivesを公開しています。
+普段から、Linuxやデータベース、Rubyなどが好きで触っています。
 
 
-[jekyll-organization]: https://github.com/jekyll
+I do information systems work at a university—kind of like the campus tech guy.
+
+This archive is publicly available to share materials used in lectures and seminars.
+I'm passionate about working with Linux, databases, and Ruby in my everyday activities.
+
