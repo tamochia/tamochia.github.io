@@ -75,7 +75,11 @@ h2 {
 h3 {
 	margin-top: 1.5em;
 	font-weight: 600;
-	font-size: 1.25em;
+	font-size: 16px;
+
+	@include responsive(pc){
+		font-size: 20px;
+	}
 }
 
 h4 {
@@ -95,7 +99,7 @@ h6 {
 }
 
 p {
-	text-align: justify;
+	//text-align: justify;
 }
 
 code {
@@ -216,7 +220,8 @@ table.rouge-table {
 }
 
 .front-page{
-	padding: 3em 1em;
+	padding-top: .5em;
+	padding-bottom: 2em;
 }
 
 .nav {
@@ -275,14 +280,10 @@ table.rouge-table {
 	}
 }
 
-.site-info {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 1em 0;
-}
-
 .site-title {
+	padding: 1em 0;
 	font-weight: bold;
+	font-size: 18px;
 
 	@include responsive(pc) {
 		font-size: 24px;
@@ -295,12 +296,11 @@ table.rouge-table {
 }
 
 .site-description {
-	margin-left: auto;
-	font-size: 10px;
+	font-size: 12px;
 	color: $color-fg-muted;
 	
 	@include responsive(pc) {
-		font-size: 12pt;
+		font-size: 14pt;
 	}
 }
 
@@ -358,6 +358,11 @@ table.rouge-table {
 		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
+		font-size: 12px;
+
+		@include responsive(pc){
+			font-size: 14px;
+		}
 	}
 
 	&__date {
