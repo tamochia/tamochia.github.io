@@ -199,6 +199,12 @@ table.rouge-table {
 	}
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
 .container{
 	max-width: $container-width;
 	margin: auto;
