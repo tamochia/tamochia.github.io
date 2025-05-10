@@ -6,18 +6,16 @@
 @import 'global';
 @import 'syntax';
 
-
-code, pre, kbd, samp {
-	font-family: $font-list-con;
-	font-size: $font-small;
-}
-
 body {
 	margin: 0;
 	padding: 0;
 	font-family: $font-list;
 	color: $color-fg-default;
 	background-color: $color-canvas-default;
+}
+
+code, pre, kbd, samp {
+	font-family: $font-list-con;
 }
 
 a {
@@ -101,6 +99,7 @@ h6 {
 
 code {
 	background-color: $color-neutral-muted;
+	padding: .1rem .2rem;
 	border-radius: 5px;
 }
 
