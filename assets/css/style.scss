@@ -9,7 +9,7 @@
 
 code, pre, kbd, samp {
 	font-family: $font-list-con;
-	font-size: 1em;
+	font-size: $font-small;
 }
 
 body {
@@ -18,7 +18,6 @@ body {
 	font-family: $font-list;
 	color: $color-fg-default;
 	background-color: $color-canvas-default;
-	line-height: 1.4;
 }
 
 a {
@@ -35,9 +34,13 @@ a {
 }
 
 p, blockquote, ul, ol, table, pre, figure {
-	margin-top: 1em;
-	margin-bottom: 1.3em;
+	margin-top: 1rem;
+	margin-bottom: 1.3rem;
 	margin-left: 0;
+}
+
+p {
+	line-height: 1.5;
 }
 
 blockquote>:first-child {
@@ -49,57 +52,51 @@ blockquote>:last-child {
 }
 
 h1 {
-	font-weight: 600;
-	padding-bottom: .3em;
-	font-size: 24px;
+	padding-bottom: .3rem;
+	font-weight: $font-weight-bold;
+	font-size: $font-x-large;
 	border-bottom: 1px solid $color-border-muted;
 
 	@include responsive(pc){
-		font-size: 26px;
+		font-size: $font-xx-large;
 	}
 }
 
 h2 {
-	margin-top: 2em;
-	margin-bottom: 1em;
-	font-weight: 600;
-	padding-bottom: .3em;
-	font-size: 20px;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	padding-bottom: .3rem;
+	font-weight: $font-weight-bold;
+	font-size: $font-large;
 	border-bottom: 1px solid $color-border-muted;
 
 	@include responsive(pc){
-		font-size: 24px;
+		font-size: $font-x-large;
 	}
 }
 
 h3 {
-	margin-top: 1.5em;
-	font-weight: 600;
-	font-size: 16px;
+	margin-top: 1.5rem;
+	font-weight: $font-weight-bold;
 
 	@include responsive(pc){
-		font-size: 20px;
+		font-size: $font-large;
 	}
 }
 
 h4 {
-	font-weight: 600;
-	font-size: 1em;
+	font-weight: $font-weight-medium;
 }
 
 h5 {
-	font-weight: 600;
-	font-size: .875em;
+	font-weight: $font-weight-medium;
+	font-size: $font-small;
 }
 
 h6 {
-	font-weight: 600;
-	font-size: .85em;
+	font-weight: $font-weight-medium;
+	font-size: $font-x-small;
 	color: $color-fg-muted;
-}
-
-p {
-	//text-align: justify;
 }
 
 code {
@@ -109,9 +106,8 @@ code {
 
 pre {
 	overflow: auto;
-	padding: .6em .9em;
+	padding: .6rem .9rem;
 	white-space: pre;
-	font-size: 98%;
 	line-height: 1.3;
 	color: $color-fg-default;
 	background-color: $color-canvas-subtle;
@@ -130,7 +126,7 @@ li {
 
 	p {
 		@include resetlist();
-		padding-bottom: .5em;
+		padding-bottom: .5rem;
 		line-height: 1.2;
 	}
 }
@@ -148,6 +144,7 @@ table {
 	width: max-content;
 	max-width: 100%;
 	overflow: auto;
+	font-size: $font-small;
 }
 
 td, th {
@@ -155,7 +152,7 @@ td, th {
 }
 
 table th {
-	font-weight: 600;
+	font-weight: $font-weight-bold;
 }
 
 table th,
@@ -188,7 +185,7 @@ table.rouge-table {
 
 	pre {
 		margin: 0;
-		padding-left: .5em;
+		padding-left: .5rem;
 		border: 0;
 	}
 	
@@ -226,8 +223,8 @@ img {
 }
 
 .front-page{
-	padding-top: .5em;
-	padding-bottom: 2em;
+	padding-top: .5rem;
+	padding-bottom: 2rem;
 }
 
 .nav {
@@ -248,7 +245,7 @@ img {
 			text-decoration: none;
 			color: $color-fg-default;
 			padding: 12px 10px;
-			font-size: 0.9em;
+			font-size: $font-small;
 		}
 	}
 }
@@ -257,15 +254,15 @@ img {
 
 	&__header{
 		border-bottom: $color-border-default;
-		padding: 1em 0;
+		padding: 1rem 0;
 	}
 
 	&__title{
 		margin: 0;
-		font-size: 24px;
+		font-size: $font-x-large;
 
 		@include responsive(pc){
-			font-size: 32px;
+			font-size: $font-xx-large;
 		}
 	}
 
@@ -274,7 +271,7 @@ img {
 	}
 
 	&__body{
-		padding: 1em 0;
+		padding: 1rem 0;
 	}
 
 	&__date{
@@ -287,12 +284,12 @@ img {
 }
 
 .site-title {
-	padding: 1em 0;
+	padding: 1rem 0;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: $font-large;
 
 	@include responsive(pc) {
-		font-size: 24px;
+		font-size: $font-x-large;
 	}
 
 	a {
@@ -302,21 +299,22 @@ img {
 }
 
 .site-description {
-	font-size: 12px;
+	padding: 1rem 0;
 	color: $color-fg-muted;
+	font-weight: $font-weight-light;
 	
 	@include responsive(pc) {
-		font-size: 14pt;
+		font-size: $font-large;
 	}
 }
 
 .pager {
-	padding-top: 2em;
+	padding-top: 2rem;
 	display: flex;
 	flex-wrap: wrap;
 
 	&__item {
-		font-size: 80%;
+		font-size: $font-small;
 	}
 
 	&__link {
@@ -328,7 +326,7 @@ img {
 	}
 
 	&__item-next{
-		//
+		margin-left: 0;
 	}
 }
 
@@ -337,7 +335,7 @@ img {
 	flex-wrap: wrap;
 
 	&__item{
-		font-size: 1.5em;
+		font-size: 1.5rem;
 
 		a{
 			color: #666;
@@ -348,7 +346,7 @@ img {
 }
 
 .archive {
-	padding-top: 1em;
+	padding: .8rem 0;
 
 	&__title {
 		margin: 0;
@@ -361,13 +359,13 @@ img {
 
 	&__property {
 		margin: 0;
-		padding: 0;
+		padding-top: .2rem;
 		display: flex;
 		flex-wrap: wrap;
-		font-size: 12px;
+		font-size: $font-small;
 
 		@include responsive(pc){
-			font-size: 14px;
+			font-size: $font-normal;
 		}
 	}
 
@@ -388,6 +386,6 @@ img {
 	&__excerpt {
 		font-size: 14px;
 		color: #666;
-		margin-top: 1em;
+		margin-top: 1rem;
 	}
 }
