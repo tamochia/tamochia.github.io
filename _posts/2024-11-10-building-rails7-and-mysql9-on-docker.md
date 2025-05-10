@@ -161,11 +161,11 @@ COPY sql/* /docker-entrypoint-initdb.d/
 
 ## db/sql/00\_init.sql
 
-```sql
+{% highlight sql %}
 CREATE USER 'dbadm'@'%' IDENTIFIED BY 'hogehoge';
 GRANT ALL PRIVILEGES ON *.* TO 'dbadm'@'%';
 FLUSH PRIVILEGES;
-```
+{% endhighlight %}
 
 ## web/Dockerfile
 
