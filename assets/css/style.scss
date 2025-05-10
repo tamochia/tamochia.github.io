@@ -123,11 +123,11 @@ pre {
 
 li {
 	margin: 0;
+	line-height: 1.3;
 
 	p {
 		@include resetlist();
 		padding-bottom: .5rem;
-		line-height: 1.2;
 	}
 }
 
