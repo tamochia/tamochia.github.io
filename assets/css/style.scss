@@ -112,12 +112,12 @@ pre {
 	background-color: $color-canvas-subtle;
 	border: 1px solid $color-border-muted;
 	border-radius: 3px;
+	font-size: $font-small;
 
 	code {
 		background: none;
 		padding: 0;
 		white-space: pre;
-		font-size: $font-small;
 	}
 }
 
