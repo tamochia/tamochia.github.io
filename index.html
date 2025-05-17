@@ -8,7 +8,7 @@ layout: default
 <p style="color:brown"><b>Currently under construction...
 <br>現在工事中...</b></p>
 
-{% for post in site.posts limit:5 %}
+{% for post in paginator.posts %}
   <article class="archive">
   <h3 class="archive__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
   <div class="archive__property">
@@ -23,6 +23,18 @@ layout: default
   </article>
 {% endfor %}
 
+<div class="paginator">
+{% if paginator.previous_page %}
+  <p class="paginator__item paginator__item-prev">
+    <a href="/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}/{% endif %}" class="paginator_link">&lt; Newer posts</a>
+  </p>
+{% endif %}
+{% if paginator.next_page %}
+  <p class="paginator__item paginator__item-next">
+    <a href="/page{{ paginator.next_page }}/" class="paginator_link">Older posts &gt;</a>
+  </p>
+{% endif %}
+</div>
+
 </div><!--container-->
 </div><!--contents-->
-

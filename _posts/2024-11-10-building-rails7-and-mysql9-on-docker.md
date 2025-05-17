@@ -37,7 +37,8 @@ RailsでのアプリケーションをDockerコンテナ上で開発するため
 - Tailwind CSS - CSSフレームワーク
 
 なお、GitHubにもGitリポジトリとしてUPしていますので、ここで説明しているファイルはすべて入手可能です。  
-tamochia/rails7-docker: Rails 7 application development environment on Docker containers
+
+[tamochia/rails7-docker: Rails 7 application development environment on Docker containers](https://github.com/tamochia/rails7-docker)
 
 <!--more-->
 

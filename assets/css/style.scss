@@ -204,7 +204,7 @@ img {
 .container{
 	max-width: $container-width;
 	margin: auto;
-	padding: 0 25px;
+	padding: 0rem 1rem;
 }
 
 .copyright{
@@ -253,7 +253,7 @@ img {
 
 	&__header{
 		border-bottom: $color-border-default;
-		padding: 1rem 0;
+		padding: 2rem 0;
 	}
 
 	&__title{
@@ -285,10 +285,10 @@ img {
 .site-title {
 	padding: 1rem 0;
 	font-weight: bold;
-	font-size: $font-large;
+	font-size: $font-x-large;
 
 	@include responsive(pc) {
-		font-size: $font-x-large;
+		font-size: $font-xx-large;
 	}
 
 	a {
@@ -326,6 +326,28 @@ img {
 
 	&__item-next{
 		margin-left: 0;
+	}
+}
+
+.paginator {
+	padding-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+
+	&__item {
+		font-size: $font-small;
+	}
+
+	&__link {
+		text-decoration: none;
+	}
+
+	&__item-prev {
+		margin-left: 0;
+	}
+
+	&__item-next {
+		margin-left: auto;
 	}
 }
 

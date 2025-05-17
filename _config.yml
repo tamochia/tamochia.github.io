@@ -29,8 +29,8 @@ markdown: kramdown
 theme: minima
 #theme: jekyll-theme-minimal
 
-paginate: 3
-paginate_path: page:num
+paginate: 5
+paginate_path: "page:num"
 
 sass:
   style: expanded
