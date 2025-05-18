@@ -52,7 +52,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 とりあえず、どちらともCDNでサクッと読み込んで1つのHTMLファイルで完結できるので、簡単に動きを試してみることが可能です。
 
-```html
+{% highlight html linenos %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -63,7 +63,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 </head>
 <body>
 :
-```
+{% endhighlight %}
 
 # ドロップダウンボタンの作成
 
@@ -73,7 +73,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 まずは、**CSSを一切使用していない状態**から作成してみます。
 
-```html
+{% highlight html %}
 <div>
   <div>Please choice.</div>
   <button>Dropdown button</button>
@@ -83,7 +83,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <a href="#">Orange</a>
   </div>
 </div>
-```
+{% endhighlight %}
 
 **【実行例】**
 
@@ -95,7 +95,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 それでは、Tailwind CSS を使用してみます。まずは各エレメントのpositionの指定から、 **`absolute`** と **`block`** を使用してボタンの下に候補リストが表示されるようにします。
 
-```html
+{% highlight html %}
 <div>
   <div class="py-2">Please choice.</div>
   <button class="py-2">Dropdown button</button>
@@ -105,7 +105,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <a href="#" class="block py-2">Orange</a>
   </div>
 </div>
-```
+{% endhighlight %}
 
 **【実行例】**
 
@@ -115,7 +115,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 次に、ボタンの背景色 `bg-blue-500` や角の丸み `rounded-md` 、候補リストについてマウスホバー時のスタイル `hover:bg-gray-200` を設定し、それらしいデザインにしてみます。
 
-```html
+{% highlight html %}
 <div>
   <div class="py-2 px-2">Please choice.</div>
   <button class="py-2 bg-blue-500 text-white w-40 rounded-md">Dropdown button</button>
@@ -125,7 +125,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <a href="#" class="block py-2 px-2 text-gray-800 hover:bg-gray-200">Orange</a>
   </div>
 </div>
-```
+{% endhighlight %}
 
 **【実行例】**
 
@@ -139,7 +139,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 詳細は Alpine.js のサイトをご確認いただくことにして、そのサイトの情報から見よう見まねでとりあえず実装してみます。私のようにあまりJavaScriptに詳しくない者でも、やろうとしていることがなんとなくわかります。
 
-```html
+{% highlight html %}
 <div x-data="{open: false, sel: 'Please choice.'}">
   <div x-text="sel" class="py-2"></div>
   <button x-on:click="open = !open" class="py-2">Dropdown button</button>
@@ -149,7 +149,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <a href="#" x-on:click="sel = 'orange'; open = false" class="block py-2">Orange</a>
   </div>
 </div>
-```
+{% endhighlight %}
 
 一番外側ブロックの div に `x-data` を設定していますが、このブロック内で使用する変数（ `open` と `sel` ）の定義と初期値の設定をしています。
 
@@ -171,7 +171,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 上のAlpine.jsによる動作の設定をしたものに、その前のTailwind CSSでの詳細な設定を組み合わせたもの（最終形）がこちらになります。
 
-```html
+{% highlight html %}
 <div x-data="{open: false, sel: 'Please choice.'}">
   <div x-text="sel" class="px-2 py-2"></div>
   <button x-on:click="open = !open" class="bg-blue-500 text-white w-40 py-2 rounded-md">Dropdown button</button>
@@ -181,7 +181,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <a href="#" x-on:click="sel = 'orange'; open = false" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">Orange</a>
   </div>
 </div>
-```
+{% endhighlight %}
 
 **【実行例】**  
 
@@ -193,7 +193,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 ちなみに、あまりカスタマイズできませんでしたが、シンプルに `select` と `option` タグをつかった例がこちらです。
 
-```html
+{% highlight html %}
 <div x-data="{sel: 'Please choice'}">
   <div x-text="sel" class="px-2 py-2"></div>
   <select x-model="sel" class="w-40 rounded-md">
@@ -202,7 +202,7 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
     <option value="orange">Orange</option>
   </select>
 </div>
-```
+{% endhighlight %}
 
 **【実行例】**  
 
