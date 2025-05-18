@@ -84,10 +84,10 @@
 .site-title {
 	padding: 1rem 0;
 	font-weight: bold;
-	font-size: $font-x-large;
+	font-size: $font-large;
 
 	@include responsive(pc) {
-		font-size: $font-xx-large;
+		font-size: $font-x-large;
 	}
 
 	a {
