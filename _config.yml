@@ -28,7 +28,7 @@ permalink: /article/:title.html
 
 # Build settings
 markdown: kramdown
-theme: minima
+#theme: minima
 #theme: jekyll-theme-minimal
 
 paginate: 5
