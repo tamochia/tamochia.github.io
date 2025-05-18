@@ -124,19 +124,16 @@
 	flex-wrap: wrap;
 
 	&__item {
+		margin-right: 4px;
+		display:block;
+		padding: 7px 16px;
+		border: 1px solid $color-border-muted;
 		font-size: $font-small;
-	}
-
-	&__link {
 		text-decoration: none;
 	}
 
-	&__item-prev {
-		margin-left: 0;
-	}
-
-	&__item-next {
-		margin-left: auto;
+	.current {
+		background-color: $color-canvas-subtle;
 	}
 }
 
