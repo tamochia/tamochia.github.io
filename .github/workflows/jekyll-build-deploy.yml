@@ -39,7 +39,7 @@ jobs:
 
       # ビルド成果物（_site）をアーティファクトとして保存
       - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: jekyll-site
           path: ./_site
