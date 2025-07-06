@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:   # 手動実行も可能にする
 
 # ワークフロー全体では権限なし（ジョブごとに明示）
 permissions: {}
@@ -27,28 +28,26 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'  # 必要に応じて変更
-
-      # BundlerとGemのインストール
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
+          ruby-version: '3.4'  # 必要に応じて変更
+          bundle-cache: true   # gemsのインストールとキャッシュを自動化 
 
       # Jekyllでサイトをビルド
       - name: Build the site with Jekyll
         run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
       # ビルド成果物（_site）をアーティファクトとして保存
       - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          name: jekyll-site
           path: ./_site
+          retention-days: 1
 
   deploy:
     name: Deploy to GitHub Pages
     needs: build  # buildジョブが完了してから実行
-
     runs-on: ubuntu-latest
 
     # デプロイに必要な権限のみを指定
@@ -61,6 +60,23 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # ビルドアーティファクトをダウンロード
+      - name: Download artifact
+        uses: actions/download-pages-artifact@v4
+        with:
+          name: jekyll-site
+          path: ./_site
+
+      # GitHub Pages の設定
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # ビルドした静的ファイルをアップロード
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
       # GitHub Pagesにアーティファクトをデプロイ
       - name: Deploy to GitHub Pages
         id: deployment
