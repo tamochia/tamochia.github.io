@@ -1,0 +1,68 @@
+name: Build and Deploy Jekyll site to GitHub Pages
+
+# mainブランチへのpush時にトリガー
+on:
+  push:
+    branches:
+      - main
+
+# ワークフロー全体では権限なし（ジョブごとに明示）
+permissions: {}
+
+jobs:
+  build:
+    name: Build Jekyll Site
+    runs-on: ubuntu-latest
+
+    # buildジョブに必要な最低限の権限
+    permissions:
+      contents: read
+
+    steps:
+      # ソースコードをチェックアウト
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # Ruby環境をセットアップ（Jekyll実行用）
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'  # 必要に応じて変更
+
+      # BundlerとGemのインストール
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      # Jekyllでサイトをビルド
+      - name: Build the site with Jekyll
+        run: bundle exec jekyll build
+
+      # ビルド成果物（_site）をアーティファクトとして保存
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build  # buildジョブが完了してから実行
+
+    runs-on: ubuntu-latest
+
+    # デプロイに必要な権限のみを指定
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # GitHub Pagesにアーティファクトをデプロイ
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
