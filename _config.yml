@@ -1,0 +1,25 @@
+url: "https://tamochia.github.io"
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "tamo's blog"
+title_separator: "|"
+description: "For all developers who love progiamming."
+author:
+  email: "tamochia@gmail.com"
+  github: tamochia
+  twitter: tamochia
+
+permalink: /article/:title.html
+
+# Build settings
+markdown: kramdown
+
+paginate: 5
+paginate_path: "page:num"
+
+sass:
+  style: expanded
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+ 

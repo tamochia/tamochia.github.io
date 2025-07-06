@@ -1,0 +1,76 @@
+name: Build and Deploy Jekyll Site
+
+# 実行するタイミング
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # 手動実行もできるようにする
+  workflow_dispatch:
+
+# GitHub Pages へのデプロイ権限を設定
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時に1つのデプロイのみ実行を許可
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # リポジトリのチェックアウト
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Ruby のセットアップ
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-version: '2.4.10'  # 必要に応じて変更
+      
+      # Ruby gems のキャッシュ
+      - name: Cache Ruby gems
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      # 依存関係のインストール
+      - name: Install dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      # Jekyll サイトのビルド
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      # GitHub Pages へのアップロード準備
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      # ビルドした静的ファイルをアップロード
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "_site/"
+
+      # GitHub Pages へのデプロイ
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
