@@ -1,4 +1,8 @@
 ---
 ---
 
-@use "base";
+@use 'variables' as *;
+@use 'global' as *;
+@use 'base' as *;
+@use 'page' as *;
+@use 'syntax' as *;

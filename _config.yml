@@ -35,3 +35,5 @@ exclude:
   - .env
   - .vscode/
   - .DS_Store 
+
+include: ['_pages']

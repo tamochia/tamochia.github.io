@@ -1,0 +1,29 @@
+// _variables.scss
+
+$container-width: 800px;
+$font-list: 'Segoe UI', Tahoma, Geneva, Verdana, Meiryo, 'Meiryo UI', メイリオ, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3, Meiryo', sans-serif;
+$font-list-con: Menlo, Consolas, monospace, sans-serif;
+
+$color-fg-default: #1f2328;
+$color-fg-muted: #656d76;
+$color-fg-subtle: #6e7781;
+$color-fg-misty: #c0c0c0;
+$color-canvas-default: #ffffff;
+$color-canvas-subtle: #f8fafa;
+//$color-code-block: #f6f8fa;
+$color-code-block: #f6f8fa;
+$color-border-default: rgba(246, 248, 250, 0.2);
+$color-border-muted: hsla(210,18%,87%,1);
+$color-neutral-muted: rgba(185,184,193,0.2);
+$color-accent-fg: #0969da;
+
+$font-xx-large: 1.75rem;  // 28px
+$font-x-large: 1.5rem;    // 24px
+$font-large: 1.125rem;    // 18px
+$font-normal: 1rem;       // 16px
+$font-small: .8125rem;    // 13px
+$font-x-small: .625rem;   // 10px
+
+$font-weight-bold: 600;
+$font-weight-medium: 500;
+$font-weight-light: 300;

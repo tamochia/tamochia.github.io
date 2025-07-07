@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  </head>
-  <body>
-    {{ content }}
-  </body>
+<html lang="ja">
+{% include head.html %}
+<body>
+<!-- ## HEADER ############################################################ -->
+<header class="header">
+<div class="container">
+<div class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></div>
+<nav class="nav">
+<ul class="nav__list">
+<li class="nav__item"><a href="{{ '/' | relative_url }}">Home</a></li>
+<li class="nav__item"><a href="{{ '/about/' | relative_url }}">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- ## CONTENT ########################################################### -->
+<main>
+
+{{ content }}
+
+</main>
+<!-- ## FOOTER ############################################################ -->
+<footer class="footer">
+<div class="container">
+<div class="footer__container">
+<p class="copyright"><small>&copy;2025 {{ site.author.email }}</small></p>
+<div class="sns-link">
+<p class="sns-link__item"><a href="https://github.com/{{ site.author.github }}"><i class="fa fa-github"></i></a></p>
+<p class="sns-link__item"><a href="https://x.com/{{ site.author.twitter }}"><i class="fa fa-twitter"></i></a></p>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
 </html>

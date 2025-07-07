@@ -1,9 +1,197 @@
-$backgroundColor: #ffffff;
-$bodyColor: #000000;
-$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+// _base.scss
+
+@use 'variables' as *;
+@use 'global' as *;
 
 body {
-  background: $backgroundColor;
-  color: $bodyColor;
-  font-family: $bodyFont;
+	margin: 0;
+	padding: 0;
+	font-family: $font-list;
+	color: $color-fg-default;
+	background-color: $color-canvas-default;
+}
+
+code, pre, kbd, samp {
+	font-family: $font-list-con;
+}
+
+a {
+	background-color: transparent;
+	color: $color-accent-fg;
+	text-decoration: none;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+	&:visited {
+		color: $color-fg-subtle;
+	}
+}
+
+p, blockquote, ul, ol, table, pre, figure {
+	margin-top: 1rem;
+	margin-bottom: 1.3rem;
+	margin-left: 0;
+}
+
+p {
+	line-height: 1.5;
+}
+
+
+h1 {
+	padding-bottom: .3rem;
+	font-weight: $font-weight-bold;
+	font-size: $font-x-large;
+	border-bottom: 1px solid $color-border-muted;
+
+	@include responsive(pc){
+		font-size: $font-xx-large;
+	}
+}
+
+h2 {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	padding-bottom: .3rem;
+	font-weight: $font-weight-bold;
+	font-size: $font-large;
+	border-bottom: 1px solid $color-border-muted;
+
+	@include responsive(pc){
+		font-size: $font-x-large;
+	}
+}
+
+h3 {
+	margin-top: 1.5rem;
+	font-weight: $font-weight-bold;
+
+	@include responsive(pc){
+		font-size: $font-large;
+	}
+}
+
+h4 {
+	font-weight: $font-weight-medium;
+}
+
+h5 {
+	font-weight: $font-weight-medium;
+	font-size: $font-small;
+}
+
+h6 {
+	font-weight: $font-weight-medium;
+	font-size: $font-x-small;
+	color: $color-fg-muted;
+}
+
+code {
+	background-color: $color-neutral-muted;
+	padding: .1rem .2rem;
+	border-radius: 5px;
+}
+
+pre {
+	overflow: auto;
+	padding: 1rem 1rem;
+	white-space: pre;
+	line-height: 1.3;
+	color: $color-fg-default;
+	background-color: $color-code-block;
+	border: 1px solid $color-border-muted;
+	border-radius: 3px;
+	font-size: $font-small;
+
+	code {
+		background: none;
+		padding: 0;
+		white-space: pre;
+	}
+}
+
+li {
+	margin: 0;
+	line-height: 1.5;
+
+	p {
+		@include resetlist();
+		padding-bottom: .5rem;
+	}
+}
+
+
+ul, ol {
+	margin: 0;
+}
+
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	width: max-content;
+	max-width: 100%;
+	overflow: auto;
+	font-size: $font-small;
+}
+
+td, th {
+	padding: 0;
+}
+
+table th {
+	font-weight: $font-weight-bold;
+}
+
+table th,
+table td {
+	padding: 6px 13px;
+	border: 1px solid $color-border-default;
+}
+
+table td>:last-child {
+	margin-bottom: 0;
+}
+
+table tr {
+	background-color: $color-canvas-default;
+	border-top: 1px solid $color-border-muted;
+}
+
+table tr:nth-child(2n) {
+	background-color: $color-canvas-subtle;
+}
+
+figure.highlight {
+	margin: 0;
+	padding: 0;
+}
+
+table.rouge-table {
+	margin: 0;
+	padding: 0;
+
+	pre {
+		margin: 0;
+		padding-left: .5rem;
+		border: 0;
+	}
+
+	pre.lineno {
+		border-right: 3px solid $color-border-muted;
+	}
+	
+	tbody, tr, td {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
 }

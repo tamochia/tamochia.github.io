@@ -1,0 +1,34 @@
+// _global.scss
+
+@use 'variables' as *;
+
+$breakpoints: (
+    'pc': (min-width: 960px),
+    'tb': (min-width: 768px),
+    'sp': (min-width: 480px)
+) !default;
+
+@mixin responsive($breakpoint) {
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    @else {
+        @error "This breakpoint is not defined. Valid breakpoints are -> #{map-keys($breakpoints)}";
+    }
+}
+
+@mixin resetlist(){
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+%meta{
+	font-size: 98%;
+	color: #666;
+	margin-top: 1em;
+}
+
+
