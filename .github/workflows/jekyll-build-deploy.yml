@@ -31,6 +31,17 @@ jobs:
           ruby-version: '3.4'  # 必要に応じて変更
           bundle-cache: true   # gemsのインストールとキャッシュを自動化 
 
+      # デバッグ
+      - name: Debug gem environment
+        run: |
+          ruby --version
+          gem --version
+          bundle --version
+          bundle env
+          bundle list
+          which jekyll || echo "Jekyll not in PATH"
+          bundle exec which jekyll || echo "Jekyll not found in bundle"
+
       # Jekyllでサイトをビルド
       - name: Build the site with Jekyll
         run: bundle exec jekyll build
