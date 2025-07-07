@@ -1,5 +1,7 @@
 // _global.scss
 
+@use "sass:map";
+@use "sass:meta";
 @use 'variables' as *;
 
 $breakpoints: (
@@ -9,8 +11,8 @@ $breakpoints: (
 ) !default;
 
 @mixin responsive($breakpoint) {
-    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
-        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+    @if map.has-key($map: $breakpoints, $key: $breakpoint) {
+        @media screen and #{meta.inspect(map.get($breakpoints, $breakpoint))} {
             @content;
         }
     }
