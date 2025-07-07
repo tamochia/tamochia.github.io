@@ -22,4 +22,16 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll-feed
- 
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - .github/
+  - node_modules/
+  - scripts/
+  - test/
+  - .env
+  - .vscode/
+  - .DS_Store 
