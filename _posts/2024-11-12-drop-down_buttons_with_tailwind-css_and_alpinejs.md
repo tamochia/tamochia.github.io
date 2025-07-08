@@ -42,9 +42,8 @@ Alpine.jsは軽量なJavaScriptフレームワークで、HTMLファイルに直
 
 部分的にちょっとインタラクティブにしたい、というような使い方の場合はこれでよさそうです。
 
-- 初心者のためのAlpine.js #Alpine.js - Qiita
-
-- Alpine.js 5分で説明するよ #JavaScript - Qiita
+- [初心者のためのAlpine.js #Alpine.js - Qiita](https://qiita.com/hakuisan/items/8a4797c4857cf4450249)
+- [Alpine.js 5分で説明するよ #JavaScript - Qiita](https://qiita.com/kohashi/items/ae8b1186567ec34b2a75)
 
 ## 両者組合わせ
 
