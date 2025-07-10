@@ -247,43 +247,111 @@ jobs:
 ```
 {% endraw %}
 
-**特徴**
-- ジョブ（`jpbs:`）を、ビルド（`build:`）とデプロイ（`deploy:`）に分離
-- デプロイに `needs: build` を明記し、依存関係を明確に定義
-- パーミッション設定として
-	- ビルドジョブは、 `contents: read` のみ
-	- デプロイジョブは、 `pages: write` と `id-token: write`のみ
-- デプロイジョブの環境変数の設定にて、GitHub Pages環境を指定、URL出力の設定
+まず全体の構成としては、こんな感じ。
+
+```yaml
+name: Build and Deploy Jekyll site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+:
+permissions: {}
+
+jobs:
+  build:
+    name: Build Jekyll Site
+    runs-on: ubuntu-latest
+    :
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build  # buildジョブが完了してから実行
+    runs-on: ubuntu-latest
+```
+
+まずは、トリガー設定として、`on.push.branches`: mainブランチにプッシュされたときに実行するようにしています。
+
+各ジョブについては、ビルド（`build:`）とデプロイ（`deploy:`）の2つのステップに分離させ、デプロイステップにて `needs: build` を明記し、依存関係を明確に定義しています。
+
+GitHub Actions上ではこんな感じで見えます。
+
+![](/assets/images/20250710a02.png){:width="600px"}
+
+ジョブが2つつながっていて、まずはビルド「`Build Jekyll Site`」を行ってからデプロイ「`Deploy to GitHub Pages`」の順にジョブが実行されます。
+
+アーティファクト（Artifacts）が2つありますが、このうち「`jekyll-site`」は、2つのジョブ間でやり取りするために使われます。
+
+1. まずはビルドステップにより、ビルドされたものが内部的なパス「`./_site`」上に展開される
+2. `actions/upload-artifact@v4` にて、「`./_site`」をZIPで固めたものをアーティファクト（`jekyll-site`）として保存（アップロード）
+3. 続いてデプロイステップに移行する
+4. まずは、`actions/download-artifact@v4` にて、アーティファクト（`jekyll-site`）をダウンロード
+5. これを「`./_site`」に展開
+6. `actions/upload-pages-artifact@v3` にて成果物「`./_site`」をアーティファクト（`github-pages`）として保存（アップロード）
+7. `actions/deploy-pages@v4` にて、GitHub Pages インフラストラクチャに直接デプロイ
+
+という流れなんじゃないかなと思います。
+今回ビルドとデプロイでジョブを分けており、それぞれ仮想マシン（コンテナ？）が異なるので、これらのアーティファクトが必要となるわけです。
+
+デプロイジョブの環境変数 `environment:` の設定にて、GitHub Pages環境、URL出力先を指定しています。
 
 {% raw %}
 ```yaml
+  environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 ```
 {% endraw %}
 
-- `vendor/bundle` のGemsのキャッシュ
-	- 従来の手動で行う方法（`actions/cache@v3`）で行う方法と、`ruby/setup` アクションの `bundler-cache: true` で行う方法がある
-	- 後者の方法は、以下を自動的にやってくれる
-		- 参考 [【GitHub Actions】キャッシュ #初心者 - Qiita](https://qiita.com/Taira0222/items/9f65f3f87c8039a28916)
-		- `bundle config` の設定
-		- `bundle install` の実行
-		- `vendor/bundle` のキャッシュ
-		- `Gemfile.lock` をキーにしたキャッシュキーの自動生成
-		- `actions/cache` を内部で使う
-	- 注意としては、 `Gemfile.lock` をリポジトリに加える（コミットする）必要あり。`.gitignore` には入れない。
-- アーティファクト（Artifact）について
-	- GitHub Actions時に生成されたファイル、異なるJobやWorkflow間でやり取りできる
-	- ビルドジョブにて、`./_site` に生成されたファイルを `actions/upload-artifact@v4` にてアップロードしている
-    - デプロイジョブでは、それを `actions/download-artifact@v4` を使用してダウンロードしている
-    - ジョブごとに仮想マシンが違うので、アーティファクトが必要 
-    
+実際のビルドは、ビルドジョブ（`build:`）の次のステップで実行しています。
+
 ```yaml
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: jekyll-site
-          path: ./_site
-          retention-days: 1
+      - name: Build the site with Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 ```
 
+基本的には、`bundle exec jekyll build` を実行しているだけです。では、このJekyllを動かす環境はどうやって構築しているかというと、その前のステップ
+
+```yaml
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true 
+```
+
+アクション `ruby/setup-ruby@v1` を使って、Ruby環境のダウンロードとセットアップ、Bundlerのインストールと `bundle install` までやってくれてます。
+プッシュのたびに、毎回これをやるのは時間がかかるので、Gemsファイルなんかはキャッシュを使ってうまくやります。
+
+`vendor/bundle` のGemsのキャッシュについては、従来の手動で行う方法（`actions/cache@v3`）で行う方法と、`ruby/setup` アクションの `bundler-cache: true` で行う方法があります。
+後者の方法は、以下を自動的にやってくれるそうです。
+
+- `bundle config` の設定
+- `bundle install` の実行
+- `vendor/bundle` のキャッシュ
+- `Gemfile.lock` をキーにしたキャッシュキーの自動生成
+- `actions/cache` を内部で使う
+
+参考 [【GitHub Actions】キャッシュ #初心者 - Qiita](https://qiita.com/Taira0222/items/9f65f3f87c8039a28916)
+注意としては、 `Gemfile.lock` をリポジトリに加える（コミットする）必要があります。`.gitignore` には入れないようにします。
+
+**.gitignore**
+
+```text
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+.bundle/
+vendor/bundle
+
+.env
+.sass-cache
+*.css.map
+*.js.map
+
+*.log
+```
