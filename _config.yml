@@ -13,6 +13,9 @@ permalink: /article/:title.html
 # Build settings
 markdown: kramdown
 
+# Google Analytics
+google_analytics: "G-YGJYL4PPWS"
+
 paginate: 5
 paginate_path: "page:num"
 
