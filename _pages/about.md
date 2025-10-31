@@ -4,15 +4,15 @@ title: About
 description: 当Webサイトについて
 permalink: /about/
 ---
-大学の中の情報システム屋さんみたいなことしてます。
+大学の中の情報システム屋さんみたいなことしており、教育と研究を支える技術に注目しています。
 
-講義やセミナーで資料を提示したり、提供したりするために、このarchivesを公開しています。
+講義やセミナーで資料を提示したり、共有したりするために、このarchivesを公開しています。
 普段から、Linuxやデータベース、Rubyなどが好きで触っています。
 
-I do information systems work at a university—kind of like the campus tech guy.
+I work on information systems at a university, focusing on technologies that support teaching and research. 
 
-This archive is publicly available to share materials used in lectures and seminars.
-I'm passionate about working with Linux, databases, and Ruby in my everyday activities.
+This archive is publicly available for sharing materials from lectures and seminars.
+I'm passionate about Linux, databases, and Ruby, which I use daily in my work.
 
 * * * *
 
