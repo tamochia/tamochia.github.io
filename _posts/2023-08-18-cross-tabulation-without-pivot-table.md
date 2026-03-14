@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "改訂版 ピボットテーブルを使用しないクロス集計"
 date: 2023-08-18
+description: "Excel にてピボットテーブルを使用せず、条件統計関数とスピル機能にてクロス集計する方法を記載しています"
 categories: 
   - "excel"
 tags: 

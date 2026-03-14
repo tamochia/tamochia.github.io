@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "CentOS 7 によるセッション記録（Tlog）ログのElasticsearchへの転送"
 date: 2021-01-30
+description: "CentOS 7 によるユーザのセッション記録（ Tlog )ログを Elasticsearch に転送して利用する話です"
 categories: 
   - "linux"
 tags: 

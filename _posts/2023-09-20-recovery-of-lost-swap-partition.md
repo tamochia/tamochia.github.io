@@ -1,5 +1,7 @@
 ---
+layout: post
 title: "HDD交換にて消失したswap領域の復旧"
+description: "HDD交換にて焼失したLinux swapパーティションの復旧についてまとめました"
 date: 2023-09-20
 categories: 
   - "linux"
@@ -7,6 +9,8 @@ tags:
   - "linux"
   - "raid"
 ---
+
+※ ここに記載している内容は、必ずしも正しい方法とは限りませんので、お試しされる際は自己責任にてお願いたします。
 
 # swap領域が消えた
 

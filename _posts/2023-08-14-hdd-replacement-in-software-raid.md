@@ -1,12 +1,16 @@
 ---
+layout: post
 title: "ソフトウェアRAID構成におけるHDD交換"
 date: 2023-08-14
+description: "ソフトウェアRAID構成のHDDアレイからHDDを交換する作業についてまとめています"
 categories: 
   - "linux"
 tags:
   - "linux"
   - "raid"
 ---
+
+※ ここに記載している内容は、必ずしも正しい方法とは限りませんので、お試しされる際は自己責任にてお願いたします。
 
 # はじめに
 

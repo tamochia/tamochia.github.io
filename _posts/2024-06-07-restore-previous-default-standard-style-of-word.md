@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Wordの既定の標準スタイルを従来の状態に戻す"
 date: 2024-06-07
+description: "Word の既定の標準スタイルにて行間が大きい場合の対応策をまとめています。"
 categories: 
   - "windows"
 tags: 

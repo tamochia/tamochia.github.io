@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "WSL2ストア版のインストールについて"
 date: 2023-06-26
+description: "Windows Store版の WSL2 のインストールについてまとめています"
 categories: 
   - "wsl"
 tags:

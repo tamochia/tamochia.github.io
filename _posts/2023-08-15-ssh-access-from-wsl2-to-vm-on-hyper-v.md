@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "WSL2からHyper-Vの仮想マシンにSSHする"
 date: 2023-08-15
+description: "WSL2からHyper-Vの仮想マシンにSSH接続する一例についてまとめています"
 categories: 
   - "linux"
 tags: 

@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "脱Node.jsにてRails 7.1(Propshaft ＋ Import Maps ＋ DartSass)でBootstrapを利用する"
 date: 2024-03-22
+description: "Rails 7 にて、Node.js を利用しない方法で Bootstrap を利用する方法をまとめています。"
 categories: 
   - "ruby"
 tags: 

@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Docker for WindowsとDocker on WSLにおけるボリュームマウント"
 date: 2019-03-11
+description: "Docker for Windows と Docker on WSL におけるボリュームマウントの話です"
 categories: 
   - "linux"
 tags:

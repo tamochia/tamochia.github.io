@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "初心者のためのviエディタの使い方"
 date: 2015-01-26
+description: "初心者のための vim (vi) エディタの使い方のチュートリアルです"
 categories: 
   - "linux"
 ---

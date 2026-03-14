@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "rsyncの際、アンダースコアで始まるファイル名の転送で失敗する"
 date: 2023-03-26
+description: "アンダースコアで始まるファイル名のファイルを rsync で転送する際の問題解決について"
 categories: 
   - "linux"
 tags: 

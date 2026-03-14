@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Docker DesktopをやめてWSL2 (Ubuntu 24.04) 上のDocker Engineに移行する"
 date: 2026-02-14
+description: "Docker Desktop から WSL2 (Ubuntu 24.04) 上の Docker Engine に移行した際の備忘録です。"
 categories:
   - "WSL"
 tags:

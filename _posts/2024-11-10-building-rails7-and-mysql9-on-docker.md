@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Rails7＋MySQL9の開発環境をDockerで構築する"
 date: 2024-11-10
+description: "Rails 7 と MySQL 9 の開発環境を Docker コンテナで構築した際の備忘録です"
 categories: 
   - "ruby"
 tags: 

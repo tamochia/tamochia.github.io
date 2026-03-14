@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "GitHub Actionsを利用したJekyll 4.4によるGitHub Pages構築"
 date: 2025-07-10
+description: "GitHub Actions を利用した Jekyll 4.4 による GitHub Pages 構築についての備忘録です。"
 categories: 
   - "Jekyll"
 tags:

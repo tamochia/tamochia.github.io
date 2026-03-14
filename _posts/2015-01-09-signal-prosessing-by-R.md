@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Rによる信号処理"
 date: 2015-01-09
+description: "R にて離散フーリエ変換（ DFT / FFT ）を使用した信号処理の一例です"
 categories: 
   - "study"
 tags:
