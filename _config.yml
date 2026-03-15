@@ -1,6 +1,6 @@
 url: "https://tamochia.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "tamo's blog"
+title: "tamo's archives"
 title_separator: "|"
 description: "For all developers who love progiamming."
 author:
