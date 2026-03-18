@@ -1,0 +1,7 @@
+# robots.txt for tamochia.github.io
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tamochia.github.io/sitemap.xml
+
