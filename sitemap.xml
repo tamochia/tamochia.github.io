@@ -1,29 +1,37 @@
 ---
 layout: null
+sitemap: false
+permalink: /sitemap.xml
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- 
+
     {% for post in site.posts %}
-      {% if post.sitemap != false %}
-        <url>
-          <loc>{{ site.url }}{{ post.url }}</loc>
-          <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-          <changefreq>monthly</changefreq>
-		  <priority>0.5</priority>
-        </url>
-      {% endif %}
+      {%- if post.sitemap == false -%}{%- continue -%}{%- endif -%}
+      <url>
+        <loc>{{ site.url }}{{ post.url }}</loc>
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+      </url>
     {% endfor %}
 
     {% for page in site.pages %}
-      {% if page.sitemap != false %}
-        <url>
-          <loc>{{ site.url }}{{ page.url }}</loc>
-          <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-          <changefreq>monthly</changefreq>
-		  <priority>0.3</priority>
-        </url>
-      {% endif %}
+      {%- if page.sitemap == false -%}{%- continue -%}{%- endif -%}
+
+      {%- assign url = page.url | default: page.permalink -%}
+
+      {%- if url == '/sitemap.xml' or url == '/feed.xml' or url == '/robots.txt' -%}
+        {%- continue -%}
+      {%- endif -%}
+
+      {%- assign ext = page.path | split: '.' | last | downcase -%}
+      {%- if ext != 'html' and ext != 'md' -%}
+        {%- continue -%}
+      {%- endif -%}
+
+      <url>
+        <loc>{{ site.url }}{{ url }}</loc>
+        <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
+      </url>
     {% endfor %}
   </urlset>

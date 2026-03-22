@@ -1,3 +1,4 @@
+encoding: "utf-8"
 url: "https://tamochia.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "tamo's archives"
