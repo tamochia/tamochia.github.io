@@ -3,5 +3,5 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://tamochia.github.io/sitemap-m.xml
+Sitemap: https://tamochia.github.io/sitemap.xml
 
