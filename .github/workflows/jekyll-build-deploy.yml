@@ -7,6 +7,9 @@ on:
       - main
   workflow_dispatch:   # 手動実行も可能にする
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # ワークフロー全体では権限なし（ジョブごとに明示）
 permissions: {}
 
