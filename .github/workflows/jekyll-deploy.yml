@@ -1,0 +1,67 @@
+name: Deploy Jekyll site to GitHub Pages
+
+# mainブランチへのpush時にトリガー
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # 手動実行も可能にする
+
+# Node.js 24への移行テスト用
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+# 連続 push 時は古いデプロイをキャンセル
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy Jekyll Site
+    runs-on: ubuntu-latest
+
+    # buildとdeployに必要な最低限の権限
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # ソースコードをチェックアウト
+      - name: Checkout source code
+        uses: actions/checkout@v5
+
+      # Ruby環境をセットアップ（Jekyll実行用）
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'  # 必要に応じて変更
+          bundler-cache: true   # gemsのインストールとキャッシュを自動化 
+
+      # Jekyllでサイトをビルド
+      - name: Build the site with Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      # GitHub Pages の設定
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # ビルドした静的ファイルをアップロード
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+      # GitHub Pagesにアーティファクトをデプロイ
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
