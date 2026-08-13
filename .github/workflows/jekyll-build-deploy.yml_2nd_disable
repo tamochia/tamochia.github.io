@@ -7,19 +7,11 @@ on:
       - main
   workflow_dispatch:   # 手動実行も可能にする
 
-# Node.js 24への移行テスト用
-
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 # ワークフロー全体では権限なし（ジョブごとに明示）
 permissions: {}
-
-# 連続 push 時は古いデプロイをキャンセル
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 
 jobs:
   build:
@@ -48,11 +40,13 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      # ビルドした静的ファイルをアップロード
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+      # ビルド成果物（_site）をアーティファクトとして保存
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v6
         with:
+          name: jekyll-site
           path: ./_site
+          retention-days: 1
 
   deploy:
     name: Deploy to GitHub Pages
@@ -69,9 +63,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # ビルドアーティファクトをダウンロード
+      - name: Download artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: jekyll-site
+          path: ./_site
+
       # GitHub Pages の設定
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # ビルドした静的ファイルをアップロード
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
 
       # GitHub Pagesにアーティファクトをデプロイ
       - name: Deploy to GitHub Pages
