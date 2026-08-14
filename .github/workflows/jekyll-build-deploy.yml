@@ -1,0 +1,64 @@
+name: Build and Deploy Jekyll site to GitHub Pages
+
+# mainブランチへのpush時にトリガー
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # 手動実行も可能にする
+
+# env:
+#  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+# ワークフロー全体では権限なし（ジョブごとに明示）
+permissions: {}
+
+jobs:
+  build:
+    name: Build Jekyll Site
+    runs-on: ubuntu-latest
+
+    # buildジョブに必要な最低限の権限
+    permissions:
+      contents: read
+
+    steps:
+      # ソースコードをチェックアウト
+      - name: Checkout source code
+        uses: actions/checkout@v6
+
+      # GitHub Pages の設定
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Jekyllでサイトをビルド
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v2
+        with:
+          source-dir: ./  
+          destination-dir: ./_site
+    
+      # ビルド成果物（_site）をアーティファクトとして保存
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v4
+        
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build  # buildジョブが完了してから実行
+    runs-on: ubuntu-latest
+
+    # デプロイに必要な権限のみを指定
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # GitHub Pagesにアーティファクトをデプロイ
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
