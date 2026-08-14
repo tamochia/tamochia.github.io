@@ -33,7 +33,7 @@ jobs:
 
       # Jekyllでサイトをビルド
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v2
+        uses: actions/jekyll-build-pages@v1
         with:
           source-dir: ./  
           destination-dir: ./_site
