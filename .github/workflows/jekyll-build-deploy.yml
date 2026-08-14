@@ -31,19 +31,26 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Ruby環境をセットアップ（Jekyll実行用）
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4'  # 必要に応じて変更
-          bundler-cache: true   # gemsのインストールとキャッシュを自動化 
+      # # Ruby環境をセットアップ（Jekyll実行用）
+      # - name: Set up Ruby
+      #   uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: '3.4'  # 必要に応じて変更
+      #     bundler-cache: true   # gemsのインストールとキャッシュを自動化 
 
-      # Jekyllでサイトをビルド
-      - name: Build the site with Jekyll
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
-    
+      # # Jekyllでサイトをビルド
+      # - name: Build the site with Jekyll
+      #   run: bundle exec jekyll build
+      #   env:
+      #     JEKYLL_ENV: production
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+
       # ビルド成果物（_site）をアーティファクトとして保存
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v4
