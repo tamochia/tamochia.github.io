@@ -110,6 +110,7 @@ with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-act
 
 やはり、Jekyll v4 で動かそうとすれば、「ruby/setup-ruby@v1」アクションにて Ruby 3.4 のコンテナを起動させ、その上で「bundle install」そして「bundle exec jekyll build」を実行するひと手間が必要なのです。以下、今回更新したワークフローです。
 
+{% raw %}
 ```yaml
 name: Build and Deploy Jekyll site to GitHub Pages
 
@@ -178,3 +179,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
 ```
+{% endraw %}
