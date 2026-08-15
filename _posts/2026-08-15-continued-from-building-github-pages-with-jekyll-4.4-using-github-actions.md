@@ -13,7 +13,9 @@ tags:
 GitHub Actionsにて次のような警告が出るようになった。
 
 ```
-Warning: Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Warning: Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced
+to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information
+see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 ```
 
 これは、Node 20 が 2026年4月にサポート終了（EOL）となっていることから、GitHub Actionsにおいても段階的廃止しますよ。っていうことみたいです。2026年秋には、すべてのアクションをNode24で実行できるよう移行する予定のようです。
@@ -22,7 +24,7 @@ Warning: Node.js 20 is deprecated. The following actions target Node.js 20 but a
 
 現在、この tamo's archives も GitHub Pages を使用していますが、Jekyll 4.4 でビルドしていることから、クラッシックモードいわゆるブランチによるデプロイではなく、GitHub Actions を使用してビルドとデプロイを行っています。
 
-[GitHub Actionsを利用したJekyll 4.4によるGitHub Pages構築 | tamo's archives](https://tamochia.github.io/article/building-github-pages-with-jekyll-4.4-using-github-actions.html)
+[GitHub Actionsを利用したJekyll 4.4によるGitHub Pages構築](https://tamochia.github.io/article/building-github-pages-with-jekyll-4.4-using-github-actions.html)
 
 ここで示したワークフローを約1年間使用してきましたが、特にメンテナンスはしていませんでした。
 
@@ -95,7 +97,9 @@ actions/download-artifact
 このワークフローの実行ログを確認したところ、次のような警告が出ていました。
 
 ```
-Warning: The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/
+Warning: The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use 
+a different Jekyll version or need additional dependencies, consider building Jekyll site 
+with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/
 ```
 
 `bundle install` も失敗しており、生成されたHTMLソースをみると Jekyll v3.10.0 となっていました。
